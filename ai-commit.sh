@@ -25,7 +25,6 @@ for arg in "$@"; do
     esac
 done
 
-# Check if we are in a git repo
 if ! git rev-parse --is-inside-work-tree &>/dev/null; then
     echo "Not a git repository"
     exit 1
@@ -44,12 +43,11 @@ fi
 
 if git diff --staged --quiet; then
     echo "No staged changes — run 'git add' first or use --all"
-    exit 1
+    exit 0
 fi
 
 python3 "$SCRIPT_DIR/python.py" $DRY_RUN $VERBOSE
 
-# Push after commit if flag is set
 if [ -n "$PUSH" ] && [ -z "$DRY_RUN" ]; then
     echo "Pushing to remote..."
     git push
