@@ -12,16 +12,24 @@ for arg in "$@"; do
         --dry-run)  DRY_RUN="--dry-run" ;;
         --verbose)  VERBOSE="--verbose" ;;
         --all)      ALL="--all" ;;
+        --push)     PUSH="--push" ;;
         --help)
             echo "Usage: ai-commit [options]"
             echo "  --dry-run   Show commit message without committing"
             echo "  --verbose   Show full diff being sent to model"
             echo "  --all       Stage all changes before committing (git add .)"
+            echo "  --push      Push to remote after committing"
             echo "  --help      Show this help message"
             exit 0
             ;;
     esac
 done
+
+# Check if we are in a git repo
+if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "Not a git repository"
+    exit 1
+fi
 
 if [ -n "$ALL" ]; then
     echo "Staging all changes..."
@@ -40,3 +48,9 @@ if git diff --staged --quiet; then
 fi
 
 python3 "$SCRIPT_DIR/python.py" $DRY_RUN $VERBOSE
+
+# Push after commit if flag is set
+if [ -n "$PUSH" ] && [ -z "$DRY_RUN" ]; then
+    echo "Pushing to remote..."
+    git push
+fi
