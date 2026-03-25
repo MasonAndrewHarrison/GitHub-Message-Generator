@@ -75,9 +75,6 @@ def generate_commit_message(diff):
             - whitespace
             - reordering
 
-            If the change is small AND unclear, respond EXACTLY:
-            minor code tweak
-
             Diff with context:
             {diff}
             """,
