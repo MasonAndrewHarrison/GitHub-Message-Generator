@@ -55,11 +55,27 @@ source ~/.bashrc
 
 ## Usage
 
+### Step by step
 ```bash
-git add .
-ai-commit
-git push
+git add .        # stage your changes
+ai-commit        # generate and commit
+git push         # push to remote
 ```
+
+### All in one step
+```bash
+ai-commit --all --push
+```
+
+## Flags
+| Flag | Description |
+|------|-------------|
+| `--all` | Stage all changes before committing |
+| `--push` | Push to remote after committing |
+| `--dry-run` | Show commit message without committing |
+| `--verbose` | Show full diff being sent to the model |
+| `--help` | Show help message |
+
 
 ---
 
