@@ -67,6 +67,7 @@ def generate_commit_message(diff):
             ONLY describe meaningful behavioral changes.
 
             Make your responces short but NO LONGER THAN 8 WORDS.
+            The Commit message could be what then theme of the changes was and them __ improvement or the them of the change with __ added
 
             Use the surrounding function context to understand intent.
 
@@ -97,6 +98,13 @@ def generate_commit_message(diff):
 
 
 if __name__ == "__main__":
+
+    dry_run = '--dry-run' in sys.argv
+    verbose = '--verbose' in sys.argv
+
+    if verbose:
+        print(f"Diff being sent:\n{diff}\n")
+
     diff = get_diff()
     if not diff.strip():
         print("No staged changes — run 'git add' first")
