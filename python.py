@@ -1,6 +1,6 @@
 import subprocess
 import requests
-
+import sys
 
 def get_diff():
     result = subprocess.run(
@@ -66,7 +66,7 @@ def generate_commit_message(diff):
 
             ONLY describe meaningful behavioral changes.
 
-            Make your responces short but NO LONGER THAN 10 WORDS.
+            Make your responces short but NO LONGER THAN 8 WORDS.
 
             Use the surrounding function context to understand intent.
 
@@ -98,24 +98,26 @@ def generate_commit_message(diff):
 
 if __name__ == "__main__":
     diff = get_diff()
-
     if not diff.strip():
         print("No staged changes — run 'git add' first")
         exit(0)
 
-    change_type = classify_diff(diff)
+    dry_run = '--dry-run' in sys.argv
 
+    change_type = classify_diff(diff)
     if change_type == "trivial":
         message = "minor code tweak"
-
     elif change_type == "reorder":
         message = "refactor code structure"
-
     else:
         message = generate_commit_message(diff)
         message = clean_message(message)
 
+    print(f"Change type: {change_type}")  
     print(f"Committing: {message}")
 
-    subprocess.run(['git', 'commit', '-m', message])
+    if dry_run:
+        print("Dry run — skipping commit")
+    else:
+        subprocess.run(['git', 'commit', '-m', message])
 
