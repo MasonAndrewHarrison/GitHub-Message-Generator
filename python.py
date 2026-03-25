@@ -66,7 +66,7 @@ def generate_commit_message(diff):
 
             ONLY describe meaningful behavioral changes.
 
-            Make your responces short about 4 to 8 words but NO LONGER THAN 10 WORDS, please.
+            Make your responces short but NO LONGER THAN 10 WORDS.
 
             Use the surrounding function context to understand intent.
 
@@ -121,3 +121,4 @@ if __name__ == "__main__":
     print(f"Committing: {message}")
 
     subprocess.run(['git', 'commit', '-m', message])
+
