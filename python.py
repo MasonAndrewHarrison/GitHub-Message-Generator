@@ -16,7 +16,6 @@ def get_diff():
     )
     return result.stdout
     
-
 def classify_diff(diff):
     added = []
     removed = []
