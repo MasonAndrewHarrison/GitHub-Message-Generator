@@ -66,7 +66,7 @@ def generate_commit_message(diff):
 
             ONLY describe meaningful behavioral changes.
 
-            Make your responces short but NO LONGER THAN 9 WORDS.
+            Make your responces short but NO LONGER THAN 8 WORDS.
 
             The Commit message could be what then theme of the changes was and them __ improvement or the them of the change with __ added
 
