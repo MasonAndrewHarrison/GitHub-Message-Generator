@@ -1,6 +1,14 @@
 import subprocess
 import requests
 import sys
+import json
+import os
+
+config_path = os.path.join(os.path.dirname(__file__), 'config.json')
+with open(config_path, 'r') as f:
+    config = json.load(f)
+
+MODEL = config.get('model', 'qwen2.5-coder:7b')
 
 def get_diff():
     result = subprocess.run(

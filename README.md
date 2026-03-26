@@ -137,6 +137,27 @@ feat: add saliency map generation for PyTorch model
 
 
 
+
+
+## Configuration
+
+Edit `config.json` to change the model:
+```json
+{
+    "model": "qwen2.5-coder:7b"
+}
+```
+
+Any model available in Ollama will work. Recommended options:
+| Model | VRAM | Quality |
+|-------|------|---------|
+| `qwen2.5-coder:3b` | ~3GB | Good |
+| `qwen2.5-coder:7b` | ~6GB | Better |
+| `qwen2.5-coder:14b` | ~10GB | Best |
+
+
+
+
 ## Credits
 - [Task Buttons](https://github.com/spencerwmiles/vscode-task-buttons) by spencerwmiles
 - [Ollama](https://github.com/ollama/ollama) for local LLM inference
