@@ -18,7 +18,7 @@
    >Why the Hell would you be using Windows
 * ~6 GB of VRAM for Qwen2.5-Code 7B
    >8 GB of VRAM is more stable\
-   >Qwen2.5-Code 3B and 14B both work although you would need to change the python code
+   >Qwen2.5-Code 3B and 14B both work although you would need to change the [config.json](/config.json) file.
 
 
 
@@ -141,7 +141,7 @@ feat: add saliency map generation for PyTorch model
 
 ## Configuration
 
-Edit `config.json` to change the model:
+Edit [config.json](/config.json) to change the model:
 ```json
 {
     "model": "qwen2.5-coder:7b"
