@@ -1,6 +1,6 @@
 # GitHub Message Generator
 
-**I created this because I don't like writing git commit messages and is created specifically for Code-OSS, although it should work in any terminal.**
+**This script automatically writes a commit message locally when you do a git commit.**
 
 ## Features
 
